@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Main Home</title>
+	<div>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</div>
+    </head>
+   <body style="background-image: url('/images/LoginPage.jpg'); background-size: cover">
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark" th:fragment="navigation">
+			<div class="container">
+				<a class="navbar-brand" href="/">CS CHECK</a>
+			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			    <span class="navbar-toggler-icon"></span>
+			  	</button>
+				<div class="collapse navbar-collapse" id="collapsibleNavbar">
+					<ul class="navbar-nav ms-auto flex-nowrap">
+						<li class="nav-item active">
+				        	<a class="btn btn-primary nav-link text-white me-2" th:href="@{/student/}">Login Student</a>
+						</li>
+				     	<li class="nav-item">
+				        	<a class="btn btn-success nav-link text-white me-2" th:href="@{/teacher/}">Login Teacher</a>
+				     	</li>
+				     	<li class="nav-item active">
+				        	<a class="btn btn-primary nav-link text-white me-2" th:href="@{/student/register}">Register Student</a>
+						</li>
+				     	<li class="nav-item">
+				        	<a class="btn btn-success nav-link text-white me-2" th:href="@{/teacher/register}">Register Teacher</a>
+				     	</li>					
+				    </ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<main>
+		<div class="container">
+			<article>
+				<div class="mt-4 card">
+				 	<div class="card-header bg-dark text-white">
+				    	<h5>การใช้งานระบบครั้งแรก</h5>
+					</div>
+					<div class="card-body">
+					    <p class="card-text">1. <strong>สำหับนักศึกษา</strong> ให้ทำการสร้าง account โดยใช้ ชื่อ-นามสกุล รหัสนักศึกษา</p>
+					    <p class="card-text">2. <strong>สำหับอาจารย์ให้ทำการสร้าง</strong> account โดยใช้ ชื่อ-นามสกุล รหัสอาจารย์</p>
+					    <p class="card-text">3. <span><strong class="text-success">Register Student</strong></span> ลงทะเบียนสำหรับนักศึกษา</p>
+					    <p class="card-text">4. <span><strong class="text-secondary">Register Teacher</strong></span> ลงทะเบียนสำหรับอาจารย์</p>
+					    <p class="card-text">5. เมื่อนักศึกษาเข้า <strong>Login</strong> สำเร็จนักศึกษาสามารถเช็ครายละเอียดงานที่ส่งได้ในระบบ</p>
+				  	</div>
+				</div>
+			</article>
+			
+			<article>
+				<div class="mt-4 card">
+				 	<div class="card-header bg-dark text-white">
+				    	<h5>คำอธิบายการส่งงาน	</h5>
+					</div>
+					<div class="card-body">
+						<p class="card-text">1. ให้นักสึกษาเลือกคอร์สเรียนเพื่อทำการเข้าดูแลปของคอร์สนั้น</p>
+					    <p class="card-text">2. นักศึกษาสามารถดาวน์โหลดไฟล์ Lab และอัพโหลดไฟล์เพื่อตรวจสอบผลลัพธ์ของโค้ดได้</p>
+				  	</div>
+				</div>
+			</article>
+    	</div>
+		
+	</main>
+    </body>
+</html>

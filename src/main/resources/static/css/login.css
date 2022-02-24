@@ -1,0 +1,27 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding-top: 5rem;
+  background-image: url('/images/LoginPage.jpg');
+  background-size: cover;
+}
+h1{
+  color: aliceblue;
+}
+
+.form-signin {
+  max-width: 25rem;
+  margin: auto;
+}
+a{
+	color: white;
+}
+a:hover{
+	color: #00FA9A;
+}
+span{
+	color: #E0FFFF;
+}

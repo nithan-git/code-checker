@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    
+    <title>TestCase</title>
+  </head>
+  <body style="background-image: url('/images/LoginPage.jpg'); background-size: cover">
+		<main >
+ 	<br>
+ 	<br>
+ 	<div class="mask d-flex align-items-center h-100 gradient-custom-3">
+	<div class="container h-100">
+	<div class="row d-flex justify-content-center align-items-center h-100">
+	<div class="col-12 col-md-9 col-lg-7 col-xl-12">
+	<div class="card" style="border-radius: 15px;">
+	<div class="card-body p-5">
+  		<h3 class="text-center">Laboratory: [[${laboratory.name}]]</h3>
+  		<h3 class="text-center">LAB DETAIL</h3>
+		<table class="table table-striped table-bordered" >
+		  <thead class="bg-dark text-white">
+		    <tr>
+		      <th scope="col">#ID</th>
+		      <th scope="col">Document Name</th>
+		      <th scope="col">Delete</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr class="align-middle" th:each="labDetail : ${laboratory.labDetails}">
+		      <th scope="row" th:text="${labDetail.labDetail_id}" ></th>
+   		      <td th:text="${labDetail.document.name}"></td>
+		      <td >
+				<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal_delete" 
+				th:data-bs-select_labDetail_id="${labDetail.labDetail_id}"
+				>Delete</button>
+		      </td>
+		      <td ></td>
+		    </tr>
+		  </tbody>
+		</table>
+		
+		<a class="btn btn-outline-primary" th:href="@{/teacher/laboratory/{classRoom_id} (classRoom_id=${laboratory.classRoom.classRoom_id})}">Back</a>
+		<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal_update" data-bs-title="Create">Create</button>
+		</div>
+	 					</div>
+	 				</div>
+	 			</div>
+	 		</div>
+ 		</div>
+	
+	</main>
+		
+		
+		
+		<!-- Modal -->
+		<div class="modal fade " id="modal_update" tabindex="-1" aria-labelledby="modal_update_title" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <form class="modal-content"  action="#" th:action="@{/teacher/labDetail/update/{laboratory_id} (laboratory_id=${laboratory.laboratory_id})}" enctype="multipart/form-data" method="post">
+		      <div class="modal-header">
+		        <h5 class="modal-title text-center" id="modal_update_title">...</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <div class="form-group">
+				    <label for="document" class="form-label"></label>
+				    <input type="file" name="document" required/>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="submit" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </form>
+		  </div>
+		</div>
+		<script type="text/javascript">
+		  	var modal = document.getElementById('modal_update');
+		  	modal.addEventListener('show.bs.modal', function (event) {
+		  	  var trigger = event.relatedTarget;
+		  	  var title = trigger.getAttribute('data-bs-title');
+		  	  document.getElementById('modal_update_title').innerText = title;
+		  	});
+		</script>
+		
+		
+		
+		<!-- Modal -->
+		<div class="modal fade" id="modal_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <form class="modal-content" id=form_delete method="post">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body" id="modal_delete_body">
+		         Are you sure?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="submit" class="btn btn-danger">Delete</button>
+		      </div>
+		    </form>
+		  </div>
+		</div>
+		<script type="text/javascript">
+		  	var modal = document.getElementById('modal_delete');
+		  	modal.addEventListener('show.bs.modal', function (event) {
+		  	  var trigger = event.relatedTarget;
+		  	  var select_labDetail_id = trigger.getAttribute('data-bs-select_labDetail_id');
+		  	  document.getElementById('form_delete').action = "/teacher/labDetail/delete/"+select_labDetail_id;
+		  	});
+		</script>
+		
+		
+  </body>
+</html>
